@@ -1,38 +1,34 @@
 import pandas as pd
 class Bet:
-    def __init__(self,name,custid,order):
-        self.name=name
-        self.custid=custid
-        self.order=order
+    def __init__(self):
+        self.order=[]
+        self.quantity=[]
+
+        print("welcome to python baker database")
+        self.custid=input("enter the cust id: ")
+        
     
     def place(self):
-        print("welcome to python database")
+        
+        self.od=input("enter the order required: ")
+        self.quant=input("enter the order quantity required: ")
 
-while True:
-    name=[input("enter the name")]
-    custid=[int(input("enter the custid in number"))]
-    order=[input("Enter the order they required")]
-    a=int(input("enter 1 to continue"))
-    break
+        
+        self.order.append(self.od)
+        self.quantity.append(self.quant)
     
-if a==1:
-    df=pd.DataFrame()
-    df["names"]=name
-    df["custid"]=custid
-    df["order"]=order
-    df
-    df.to_csv("C:\\Users\\sande\\OneDrive\\Desktop\\applebox project\\bakery management code.csv")
-    
-else:
-    print("ok")
-    d=int(input("enter 1 to custdata using custid"))
 
-if d==1:
-    c=int(input("enter the custid"))
-    if c in custid:
-        print("custid=",name,order)
-    else:
-        print("no data found")
-else:
-    print("Thank you")
+data=Bet()
+n=int(input("enter the total orders: "))
+for i in range(n):
+    data.place()
 
+df=pd.DataFrame({
+    "order" : data.order ,
+    "quantity" : data.quantity
+})
+print(df)
+
+c=input("enter the custid: ")
+if c in data.custid:
+    print(data.order,data.quantity)
